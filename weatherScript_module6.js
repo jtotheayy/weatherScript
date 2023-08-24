@@ -1,4 +1,3 @@
-
 let button = document.getElementById("searchbutton");
 
 //search button calls the get method
