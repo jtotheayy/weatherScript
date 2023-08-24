@@ -8,9 +8,10 @@ button.onclick = function(){
     lookupCity(cityname);
     fetch('weatherapp.php')
       .then(response => response.json())
-        console.log(response);
       .then(data => {
         const apiKey = data.apiKey;
+        console.log(apiKey);
+
     document.getElementById("introduction").innerHTML += apiKey + "  .";
       })
 }
@@ -58,7 +59,8 @@ showHistory();
       .then(response => response.json())
       .then(data => {
         const apiKey = data.apiKey;
-      
+        console.log(apiKey);
+
 
         if (cityname != ""){
             
@@ -98,9 +100,10 @@ showHistory();
     function lookupWeather(lat,lon){
         fetch('weatherapp.php')
         .then(response => response.json())
-            console.log(response);
         .then(data => {
           const apiKey = data.apiKey;
+            console.log(apiKey);
+
         
         
         var xml = new XMLHttpRequest();
