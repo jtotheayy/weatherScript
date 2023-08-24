@@ -1,4 +1,3 @@
-import config from './config.js';
 
 let button = document.getElementById("searchbutton");
 
