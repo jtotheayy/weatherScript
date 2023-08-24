@@ -6,10 +6,6 @@ let button = document.getElementById("searchbutton");
 button.onclick = function(){
     let cityname = document.getElementById("search").value;
     lookupCity(cityname);
-    const apiKey = config.apiKey;
-
-    document.getElementById("introduction").innerHTML += apiKey + "  .";
-      
 }
 
 //automatically pull up history on visit
