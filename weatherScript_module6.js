@@ -1,4 +1,5 @@
 
+
 let button = document.getElementById("searchbutton");
 
 //search button calls the get method
@@ -52,6 +53,12 @@ showHistory();
 
 //get method for coordinates by city name
     function lookupCity(cityname){
+        fetch('weatherapp.php')
+      .then(response => response.json())
+      .then(data => {
+        const apiKey = data.apiKey;
+      
+
         if (cityname != ""){
             
             var xml = new XMLHttpRequest();
@@ -70,9 +77,10 @@ showHistory();
             }
         }
     }
-    xml.open("GET", "https://api.openweathermap.org/geo/1.0/direct?q="+ cityname + "&limit=1&appid=" +"a55306635157a3e154bd850c24a6cf33", true);
+    xml.open("GET", "https://api.openweathermap.org/geo/1.0/direct?q="+ cityname + "&limit=1&appid=" + apiKey, true);
     xml.send();
         }
+    })
 
     }
 
@@ -87,6 +95,12 @@ showHistory();
 
 //get method function for weather
     function lookupWeather(lat,lon){
+        fetch('weatherapp.php')
+        .then(response => response.json())
+        .then(data => {
+          const apiKey = data.apiKey;
+        
+        
         var xml = new XMLHttpRequest();
         xml.onreadystatechange = function () {
 
@@ -95,9 +109,10 @@ showHistory();
             getForecast(data);
     }
 }
-    xml.open("GET", "https://api.openweathermap.org/data/2.5/forecast?lat=" +lat+ "&lon=" + lon + "&appid=a55306635157a3e154bd850c24a6cf33&units=imperial", true);
+    xml.open("GET", "https://api.openweathermap.org/data/2.5/forecast?lat=" +lat+ "&lon=" + lon + "&appid=" + apiKey + "&units=imperial", true);
     xml.send();
-     }
+})
+}
     
 //display the forecast on the HTML page
     function getForecast(jsondata){
