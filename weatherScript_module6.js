@@ -1,4 +1,5 @@
 
+
 let button = document.getElementById("searchbutton");
 
 //search button calls the get method
@@ -48,6 +49,9 @@ showHistory();
         window.localStorage.setItem('list', listOfHistory);
     }
 
+    const config = {
+        apiKey: 'a55306635157a3e154bd850c24a6cf33'
+    };
 //get method for coordinates by city name
     function lookupCity(cityname){
         const apiKey = config.apiKey;
