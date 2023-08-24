@@ -195,4 +195,3 @@ showHistory();
         var forecast = document.getElementById("forecast");
         forecast.style.display="block";
     }
-
