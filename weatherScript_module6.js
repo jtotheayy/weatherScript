@@ -1,4 +1,4 @@
-
+import config from './config.js';
 
 let button = document.getElementById("searchbutton");
 
@@ -6,14 +6,10 @@ let button = document.getElementById("searchbutton");
 button.onclick = function(){
     let cityname = document.getElementById("search").value;
     lookupCity(cityname);
-    fetch('weatherapp.php')
-      .then(response => response.json())
-      .then(data => {
-        const apiKey = data.apiKey;
-        console.log(apiKey);
+    const apiKey = config.apiKey;
 
     document.getElementById("introduction").innerHTML += apiKey + "  .";
-      })
+      
 }
 
 //automatically pull up history on visit
@@ -55,11 +51,7 @@ showHistory();
 
 //get method for coordinates by city name
     function lookupCity(cityname){
-        fetch('weatherapp.php')
-      .then(response => response.json())
-      .then(data => {
-        const apiKey = data.apiKey;
-        console.log(apiKey);
+        const apiKey = config.apiKey;
 
 
         if (cityname != ""){
@@ -83,7 +75,7 @@ showHistory();
     xml.open("GET", "https://api.openweathermap.org/geo/1.0/direct?q="+ cityname + "&limit=1&appid=" + apiKey, true);
     xml.send();
         }
-    })
+
 
     }
 
@@ -98,11 +90,8 @@ showHistory();
 
 //get method function for weather
     function lookupWeather(lat,lon){
-        fetch('weatherapp.php')
-        .then(response => response.json())
-        .then(data => {
-          const apiKey = data.apiKey;
-            console.log(apiKey);
+        
+            const apiKey = config.apiKey;
 
         
         
@@ -116,7 +105,7 @@ showHistory();
 }
     xml.open("GET", "https://api.openweathermap.org/data/2.5/forecast?lat=" +lat+ "&lon=" + lon + "&appid=" + apiKey + "&units=imperial", true);
     xml.send();
-})
+
 }
     
 //display the forecast on the HTML page
